@@ -1,0 +1,12 @@
+permission_name,permission_display_name,permission_description,super-admin;Super Admin,administrator;Administrator,user;User
+configure-system,Configure System,Configure System,y,n,n
+browse-users,Browse Users,Browse Users,y,y,n
+create-users,Create New Users,Create New Users,y,y,n
+view-user-profile,View Profiles of Users,View Profiles of Users,y,y,n
+edit-user-profile,Edit Profiles of Users,Edit Profiles of Users,y,y,n
+view-user-permissions,View Permissions of a User,View Permissions of a User,y,y,n
+edit-user-permissions,Edit Permissions of a User,Edit Permissions of a User,y,y,n
+delete-users,Delete Users,Delete Users,y,y,n
+view-own-profile,View Own Profile,View Own Profile,y,y,y
+edit-own-profile,Edit Own Profile,Edit Own Profile,y,y,y
+reset-own-password,Reset Own Password,Reset Own Password,y,y,n
