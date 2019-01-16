@@ -2,7 +2,7 @@
     "name": "vizrex/laratrust-ingest",
     "description": "Utility package to ingest roles and permissions easily using command line.",
     "type": "laravel-package",
-    "licsense": "proprietary",
+    "license": "proprietary",
     "authors": [{
         "name": "Vizrex",
         "email": "laravel@vizrex.com"
@@ -27,5 +27,5 @@
             ]
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }
