@@ -6,5 +6,8 @@
 
 > The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 1.0.1
+Update maatwebsite/excel to v3
+
 ## 1.0.0
 - Added `roles-and-permissions:update {csvFilePath}` command
