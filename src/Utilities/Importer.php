@@ -128,7 +128,7 @@ class Importer
         foreach ($strRoles as $strRole)
         {
             $parts = explode(";", $strRole);
-            $roles[$strRole] = [
+            $roles[] = [
                 'name' => $parts[0],
                 'display_name' => isset($parts[1]) ? $parts[1] : null,
                 'description' => isset($parts[2]) ? $parts[2] : null
@@ -157,7 +157,7 @@ class Importer
         
         $headers = fgetcsv($hFile);
         $strRoles = array_slice($headers, 3);
-        $roles = $this->getRoles($strRoles);
+        $roles = $this->readRoles($strRoles);
         
         $rolesCount = count($roles);
         
@@ -190,18 +190,4 @@ class Importer
         
         return $data;
     }
-    
-    private function getRoles($headers)
-    {
-        $roles = [];
-        $headersCount = count($headers);
-        
-        if($headersCount > 3)
-        {
-            $roles = $this->readRoles(array_slice($headers, 3));
-        }
-        
-        return $roles;
-    }
-
 }
