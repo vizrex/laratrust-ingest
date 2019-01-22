@@ -11,7 +11,6 @@ namespace Vizrex\LaratrustIngest\Utilities;
 
 use App\Role;
 use App\Permission;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\DB;
 use Vizrex\Laraviz\Traits\LaravizModel;
 
@@ -151,51 +150,58 @@ class Importer
             Role::create($role);
         }
     }
-
+    
     private function loadDataFromCSV()
     {
-        $data = [];
-        Excel::load($this->csvFilePath, function($reader) use (&$data)
+        $hFile = fopen($this->csvFilePath, "r");
+        
+        $headers = fgetcsv($hFile);
+        $strRoles = array_slice($headers, 3);
+        $roles = $this->getRoles($strRoles);
+        
+        $rolesCount = count($roles);
+        
+        while(!feof($hFile))
         {
-
-            // Getting all results
-            $results = $reader->get();
-
-            // Get Headings
-            $headings = $results->getHeading();
-            $totalColumns = count($headings);
-
-            // Parse and Create array of Roles
-            $strRoles = array_slice($headings, 3);
-            $roles = $this->readRoles($strRoles);
-
-            $permissions = [];
-            foreach ($results as $row)
+            $row = fgetcsv($hFile);
+            $permissionName = $row[0];
+            $assignments = [];
+            for ($i = 0; $i < $rolesCount; $i++)
             {
-                $permissionName = $row["permission_name"];
-                $assignments = [];
-                foreach ($strRoles as $strRole)
+                $roleName = $roles[$i]['name'];
+                if ($row[$i + 3] == "y")
                 {
-                    $roleName = $roles[$strRole]['name'];
-                    if ($row[$strRole] == "y")
-                    {
-                        $assignments[] = $roleName;
-                    }
+                    $assignments[] = $roleName;
                 }
-
-                $permissions[$permissionName] = [
-                    "name" => $permissionName,
-                    "display_name" => $row["permission_display_name"],
-                    "description" => $row["permission_description"],
-                    "assignments" => $assignments
-                ];
             }
 
-            $data["roles"] = $roles;
-            $data["permissions"] = $permissions;
-        });
-
+            $permissions[$permissionName] = [
+                "name" => $permissionName,
+                "display_name" => $row[1],
+                "description" => $row[2],
+                "assignments" => $assignments
+            ];
+        }
+        
+        fclose($hFile);
+        
+        $data["roles"] = $roles;
+        $data["permissions"] = $permissions;
+        
         return $data;
+    }
+    
+    private function getRoles($headers)
+    {
+        $roles = [];
+        $headersCount = count($headers);
+        
+        if($headersCount > 3)
+        {
+            $roles = $this->readRoles(array_slice($headers, 3));
+        }
+        
+        return $roles;
     }
 
 }
