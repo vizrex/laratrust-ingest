@@ -9,7 +9,7 @@
     }],
     "require": {
         "php": ">=7.0.0",
-        "santigarcor/laratrust": "5.0.*",
+        "santigarcor/laratrust": "5.*",
         "illuminate/support": "~5",
         "vizrex/laraviz": "~1"
     },
