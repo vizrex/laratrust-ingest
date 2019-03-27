@@ -14,3 +14,6 @@ Update maatwebsite/excel to v3
 
 ## 1.0.0
 - Added `roles-and-permissions:update {csvFilePath}` command
+
+## 2.0.0
+- santigarcor/laratrust version updated from 5.0.* to 5.*
