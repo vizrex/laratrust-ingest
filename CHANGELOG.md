@@ -20,5 +20,5 @@ Update maatwebsite/excel to v3
 
 ## 3.0.0
 Support Laravel 6.0
-- Updated illuminate/support from ~5 to ~6
+- Updated illuminate/support from "~5" to "~5.1|^6.0"
 - Updated php from >=7.0.0 to >=7.2.0
