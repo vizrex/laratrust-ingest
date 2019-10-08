@@ -8,9 +8,9 @@
         "email": "laravel@vizrex.com"
     }],
     "require": {
-        "php": ">=7.0.0",
+        "php": ">=7.2.0",
         "santigarcor/laratrust": "5.*",
-        "illuminate/support": "~5",
+        "illuminate/support": "~6",
         "vizrex/laraviz": "~1"
     },
     "require-dev": {},
