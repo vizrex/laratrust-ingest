@@ -17,3 +17,8 @@ Update maatwebsite/excel to v3
 
 ## 2.0.0
 - santigarcor/laratrust version updated from 5.0.* to 5.*
+
+## 3.0.0
+Support Laravel 6.0
+- Updated illuminate/support from "~5" to "~5.1|^6.0"
+- Updated php from >=7.0.0 to >=7.2.0
